@@ -1,3 +1,4 @@
+
 #!/usr/bin/env python2
 #    Copyright (C) 2011 Pau Escrich <pau@dabax.net>
 #
@@ -31,6 +32,10 @@ import time
 
 class SimpleBrowser(FancyURLopener):
     version = "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.6) Gecko/20070725 Firefox/2.0.0.6"
+    # Redefine
+    def get_user_passwd(self, host, realm, clear_cache=0):
+        print "get_user_passwd() called; host %s, realm %s" % (host, realm)
+        raise Exception('I know Python!') # don't, if you catch, likely to hide bugs.
 
 class crawler():
 	def __init__(self,url,db):	
